@@ -69,20 +69,20 @@ async function run() {
             const result = await usersCollection.updateOne(filter, updateDoc, options);
             res.json(result);
         })
-        // app.put('/countries/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const country = req.body;
-        //     // console.log(countries);
-        //     const filter = { _id: ObjcetId(id) };
-        //     const options = { upsert: true };
-        //     const updateDoc = {
-        //         $set: {
-        //             status: "Approved"
-        //         }
-        //     };
-        //     const result = await countriesCollection.updateOne(filter, updateDoc, options);
-        //     res.json(result);
-        // })
+        app.put('/countries/:id', async (req, res) => {
+            const id = req.params.id;
+            const updateStatus = req.body;
+            const filter = { _id: ObjcetId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    status: `Approved`
+                },
+            };
+            const result = await countriesCollection.updateOne(filter, updateDoc, options)
+            res.json(result);
+            console.log(result)
+        })
 
         //DELETE 
         app.delete('/countries/:id', async (req, res) => {
