@@ -81,7 +81,6 @@ async function run() {
             };
             const result = await countriesCollection.updateOne(filter, updateDoc, options)
             res.json(result);
-            console.log(result)
         })
 
         //DELETE 
